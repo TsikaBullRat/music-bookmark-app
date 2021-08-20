@@ -6,6 +6,7 @@ import { Login, Signup } from './src/Screens'
 import { Main } from './Main'
 import { firebase } from './src/firebase/config';
 import { FaAddressCard } from 'react-icons/fa'
+import { CircleLoader } from 'react-spinners';
 
 const Stack = createStackNavigator()
 
@@ -21,10 +22,8 @@ export default function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(()=>{
-    
     user?(
-      
-        
+      setLoading(false)
     ):(
       firebase.auth().signInWithEmailAndPassword(email, password)
           .then(() => {
@@ -46,8 +45,7 @@ export default function App() {
           .catch(err=>{
             console.log(err)
           })
-    )
-  })
+   )
 
   // useEffect(()=>{
   //   firebase.auth().signInWithEmailAndPassword(email, password)
@@ -81,7 +79,7 @@ export default function App() {
       <Main user={user} />
      {/* <FaAddressCard/>*/}
       {/*{user ? (
-          loading?(<Main user={user} />
+          loading?(<Main user={user} />:
             
       ) : (
         <NavigationContainer>
