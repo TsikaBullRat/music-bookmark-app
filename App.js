@@ -13,39 +13,39 @@ const Stack = createStackNavigator()
 export default function App() {
 
   const [user, setUser] = useState(null)
-  const [loggedin, setLoggedin] = useState(false)
+  // const [loggedin, setLoggedin] = useState(false)
 
   //Testing facility
   //code: "auth/quota-exceeded"
-  const[email, setEmail] = useState("yomzi123@gmail.com")
-  const [password, setPassword] = useState("Asstastic")
-  const [loading, setLoading] = useState(true)
+  // const[email, setEmail] = useState("yomzi123@gmail.com")
+  // const [password, setPassword] = useState("Asstastic")
+  // const [loading, setLoading] = useState(true)
 
-  useEffect(()=>{
-    user?(
-      setLoading(false)
-    ):(
-      firebase.auth().signInWithEmailAndPassword(email, password)
-          .then(() => {
-            firebase.firestore().collection("users").doc(email).get()
-              .then(doc => setUser(doc.data()))
-              .catch(err=>{
-                if(err.code === "auth/quota-exceeded"){
-                  if(email === "yomzi123@gmail.com"){
-                    setEmail("tsika1996190514@gmail.com")
-                    setPassword("Kingslayer")
-                  }else{
-                    setEmail("yomzi123@gmail.com")
-                    setPassword("Asstastic")
-                  }
-                }
-                console.log(err)
-              })
-          })
-          .catch(err=>{
-            console.log(err)
-          })
-   )
+  // useEffect(()=>{
+  //   user?(
+  //     setLoading(false)
+  //   ):(
+  //     firebase.auth().signInWithEmailAndPassword(email, password)
+  //         .then(async() => {
+  //           await firebase.firestore().collection("users").doc(email).get()
+  //             .then(doc => Enter(doc.data()))
+  //             .catch(err=>{
+  //               if(err.code === "auth/quota-exceeded"){
+  //                 if(email === "yomzi123@gmail.com"){
+  //                   setEmail("tsika1996190514@gmail.com")
+  //                   setPassword("Kingslayer")
+  //                 }else{
+  //                   setEmail("yomzi123@gmail.com")
+  //                   setPassword("Asstastic")
+  //                 }
+  //               }
+  //               console.log(err)
+  //             })
+  //         })
+  //         .catch(err=>{
+  //           console.log(err)
+  //         })
+  // )})
 
   // useEffect(()=>{
   //   firebase.auth().signInWithEmailAndPassword(email, password)
@@ -71,16 +71,13 @@ export default function App() {
   // })
 
 
-  const Enter = (info) => {
-    info ? setUser(info) : null
+  const Enter = async(info) => {
+    await info ? setUser(info) : null
   }
   return (
     <>
-      <Main user={user} />
-     {/* <FaAddressCard/>*/}
-      {/*{user ? (
-          loading?(<Main user={user} />:
-            
+      {user ? (
+          <Main user={user} />
       ) : (
         <NavigationContainer>
           <Stack.Navigator>
@@ -92,7 +89,7 @@ export default function App() {
             </Stack.Screen>
           </Stack.Navigator>
         </NavigationContainer>
-      )}*/}
+      )}
     </>
   );
 }

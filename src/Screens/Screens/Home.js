@@ -6,8 +6,9 @@ import { MyTracks } from '../Components/MyTracks'
 import {Add} from '../Components/Add'
 import {styles} from '../styles'
 
-export function Home({user, navigation}){
+export function Home({tracklist, navigation, Delete}){
 
+    
     
     return(
         <View style={styles.base}>
@@ -16,9 +17,9 @@ export function Home({user, navigation}){
             </View>
             
             <View style={styles.body}>
-                <MyTracks/>
-                <Add navigation={navigation}/>
-                <LastPlayed/>
+                <MyTracks tracks={tracklist} navigation={navigation}   Delete={Delete}/>{/*Track={user.tracklist}*/}
+                <Add navigation={navigation} styling={styles.add}/>
+                <LastPlayed tracks={tracklist}/>
             </View>
         </View>
     )

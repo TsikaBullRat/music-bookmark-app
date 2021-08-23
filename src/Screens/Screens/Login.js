@@ -9,7 +9,7 @@ export function Login({navigation, Enter}) {
 
     const Login = () =>{
         firebase.auth().signInWithEmailAndPassword(email,password).then(
-            firebase.firestore().collection("users").doc(email).get()
+            firebase.firestore().collection("users").where('email', '==', email).get()
                 .then(doc=>Enter(doc.data()))
                 .catch(err=>console.log(err))
         ).catch(err=>{

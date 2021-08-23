@@ -3,13 +3,13 @@ import { useState } from 'react'
 import { TextInput, View, Text, TouchableOpacity } from 'react-native'
 import {styles} from '../styles'
 import {firebase} from '../../firebase/config'
+import { v1 as uuid} from 'uuid'
 
 export function Signup({Enter}){
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [user, setUser] = useState(null)
 
     const Submit = () =>{
         firebase.auth().createUserWithEmailAndPassword(email, password).then(()=>{
@@ -19,14 +19,14 @@ export function Signup({Enter}){
                 tracklist:null
             })
 
-            firebase.firestore().collection("users").doc(email).get().then(doc=>Enter(doc.data()))
+            Enter(firebase.firestore().collection("users").doc(email).get()
+                .then(doc=>doc.data())
                 .catch(err=>{
                     console.log(err)
-                })
+                }))
         }).catch(err=>{
             console.log(err)
         })
-        Enter(user)
     }
 
     return (

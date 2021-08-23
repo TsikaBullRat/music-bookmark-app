@@ -10,6 +10,9 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         textAlign: 'center'
     },
+    base:{
+        height: 'auto'
+    },
     input:{
         backgroundColor: '#fff',
         margin: 10,
@@ -76,22 +79,31 @@ export const styles = StyleSheet.create({
         margin: 3
     },
     trackholster:{
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'wrap-reverse',
         position: 'relative',
         top: 10,
         borderColor: '#64C9CF',
         borderWidth: 2,
         width: 330,
         height: 330,
-        borderRadius: 25
+        borderRadius: 25,
+        backgroundColor: "transparent"
     },
     lastpalyedlist:{
         position: 'relative',
         top: 20,
     },
     tracktab:{
-        flex: 2,
-        alignItems: 'flex-start',
-        width: 350
+        display: 'flex',
+        width: 350,
+        height: 80,
+        backgroundColor: "#FFB740",
+        margin: 2,
+        borderRadius: 25,
+        paddingLeft: 15,
+        justifyContent: 'space-between'
     },
     body:{
         flex: 1,
@@ -109,9 +121,51 @@ export const styles = StyleSheet.create({
         top: 20,
         left: 120
     },
+    add2:{
+        backgroundColor: '#FDE49C',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 50,
+        height: 50,
+        borderRadius: 50,
+        position: 'relative',
+        top: 20,
+        left: 20
+    },
     addSize:{
         fontSize: 35,
         fontWeight: 'bold',
+    },
+    trackcard:{
+        position: 'relative',
+        alignItems: 'center',
+        width: 150,
+        height: 150,
+        marginLeft: 10,
+        marginRight: 10,
+        marginBottom: 20,
+        marginTop: 20
+    },
+    textTrack:{
+        color: "#000",
+    },
+    tracktabtext:{
+        position: 'relative',
+        top: -30,
+        left: 75
+    },
+    tracktabicon:{
+        position: 'relative',
+        top: 10
+    },
+    row:{
+        flex: 2,
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    },
+    delete:{
+        color: '#DF711B'
     }
 });
 

@@ -3,10 +3,10 @@ import { View } from 'react-native'
 import { styles } from '../styles'
 import { TrackTab } from './TrackTab'
 
-export const LastPlayed = () =>{
+export const LastPlayed = ({tracks}) =>{
     return(
         <View style={styles.lastpalyedlist}>
-            <TrackTab/>
+            {/*tracks.map(item=><TrackTab track={item}/>)*/}
         </View>
     )
 }

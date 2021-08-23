@@ -26,8 +26,8 @@ export const AddTrack = ({Update, navigation}) =>{
             <TextInput style={styles.input} placeholder="Artist" onChangeText={ent=>setArtist(ent)}/>
             <TextInput style={styles.input} placeholder="Album" onChangeText={ent=>setAlbum(ent)}/>
             <TextInput style={styles.input} placeholder="Year" onChangeText={ent=>setYear(ent)}/>
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.button_text} onPress={AddSong}>Add Song</Text>
+            <TouchableOpacity style={styles.button} onPress={AddSong}>
+                <Text style={styles.button_text}>Add Song</Text>
             </TouchableOpacity>
         </View>
     )
